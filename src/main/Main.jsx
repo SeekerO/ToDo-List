@@ -1,6 +1,6 @@
 import React, { Suspense, lazy, useLocation } from "react";
 import { Routes, Route } from "react-router-dom";
-import logo from ""
+
 const Upcoming = lazy(() => import("./upcoming/Upcoming"));
 const Calendar = lazy(() => import("./calendar/Calendar"));
 const Today = lazy(() => import("./today/Today"));
