@@ -1,32 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
+import Menubar from "./menu/Menubar";
 
 const Side = () => {
+  const [openMenu, setopenMenu] = useState(true);
   return (
-    <sidebar className="w-[25%] rounded-md h-[80%] MainColor gap-y-10 flex flex-col items-center justify-center ">
-      <div className="items-center justify-center flex-col flex">
-        <div className="h-40 w-40 bg-slate-400 justify-center flex items-center rounded-md">
-          IMAGE
-        </div>
-        <span> Dolore adipisicing elit</span>
-      </div>
-      <div className="grid grid-cols-2 gap-4">
-        <div className="w-[100px] h-[100px] rounded-md bg-gray-200 text-black p-2 flex-col flex items-center">
-          <label className="font-thin">TODO</label>
-          <label className="font-bold text-[30px]">0</label>
-        </div>
-        <div className="w-[100px] h-[100px] rounded-md bg-gray-200 text-black p-2 flex-col flex items-center">
-          <label className="font-thin">COMPLETED</label>
-          <label className="font-bold text-[30px]">0</label>
-        </div>
-        <div className="w-[100px] h-[100px] rounded-md bg-gray-200 text-black p-2 flex-col flex items-center">
-          <label className="font-thin">ARCHIVE</label>
-          <label className="font-bold text-[30px]">0</label>
-        </div>
-        <div className="w-[100px] h-[100px] rounded-md bg-gray-200 text-black p-2 flex-col flex items-center">
-          <label className="font-thin">DELETED</label>
-          <label className="font-bold text-[30px]">0</label>
-        </div>
-      </div>
+    <sidebar
+      className={` h-[100%] gap-y-10 flex flex-col items-center relative p-5 ${
+        openMenu && "w-[20%] duration-300"
+      }`}
+    >
+      <Menubar openMenu={openMenu} setopenMenu={setopenMenu} />
     </sidebar>
   );
 };

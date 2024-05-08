@@ -1,17 +1,27 @@
-import React from "react";
-import { FaPlus } from "react-icons/fa";
+import React, { Suspense, lazy, useLocation } from "react";
+import { Routes, Route } from "react-router-dom";
+
+const Upcoming = lazy(() => import("./upcoming/Upcoming"));
+const Calendar = lazy(() => import("./calendar/Calendar"));
+const Today = lazy(() => import("./today/Today"));
+const Stickywall = lazy(() => import("./sticky/Stickywall"));
 
 const Main = () => {
   return (
-    <main className="w-[70%] items-center flex flex-col overflow-x-auto  rounded-md h-[80%] SecondColor ">
-      <h1 className="tracking-widest text-[40px] font-thin">TODO-LIST</h1>
-      <div className="flex w-full h-full text-black p-1">
-        <div className="w-[25%] h-[90%] bg-white relative ">
-          <div className="p-2 flex gap-2 items-center bg-yellow-200 absolute w-full bottom-0">
-            <FaPlus className="" /> Add Task
-          </div>
-        </div>
-        <div className="w-[75%] h-[90%] bg-slate-100 ">asd</div>
+    <main className="w-full h-[100%] items-center flex flex-col overflow-x-auto px-10">
+      <h1 className="tracking-widest text-[40px] font-thin text-black">
+        TODO-LIST
+      </h1>
+      <div className="w-[100%] bg-gray-700 h-[1px]" />
+      <div className="flex justify-start items-start w-full mt-10">
+        <Suspense fallback="LOADING...">
+          <Routes>
+            <Route path="/" element={<Upcoming />} />
+            <Route path="/today" element={<Today />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/stickywall" element={<Stickywall />} />
+          </Routes>
+        </Suspense>
       </div>
     </main>
   );

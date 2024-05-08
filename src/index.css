@@ -3,21 +3,8 @@
 @tailwind utilities;
 
 .MainColor {
-  @apply bg-[#5e5abe];
+  @apply bg-[#6763cf];
 }
-
-.SecondColor {
-  @apply bg-[#7b75bb];
-}
-
-.ThirdColor {
-  @apply bg-[#9a8db6];
-}
-
 .AccentColor {
-  @apply bg-[#bba4ae];
-}
-
-.TextColor {
-  @apply text-[#debba3];
+  @apply bg-[#70a5d5];
 }
