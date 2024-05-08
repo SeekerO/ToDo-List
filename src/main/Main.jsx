@@ -9,12 +9,7 @@ const Stickywall = lazy(() => import("./sticky/Stickywall"));
 const Main = () => {
   return (
     <main className="w-full h-[100%] items-center flex flex-col overflow-x-auto px-10">
-      <h1 className="tracking-widest text-[40px] font-thin text-black">
-        TODO-LIST
-      </h1>
-      <div className="w-[100%] bg-gray-700 h-[1px]" />
-      <div className="flex justify-start items-start w-full mt-10 relative">
-        <img />
+      <div className="flex h-full justify-start items-start w-full mt-10 relative">
         <Suspense fallback="LOADING...">
           <Routes>
             <Route path="/" element={<Upcoming />} />

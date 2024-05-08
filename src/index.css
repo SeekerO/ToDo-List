@@ -8,3 +8,7 @@
 .AccentColor {
   @apply bg-[#70a5d5];
 }
+
+.ButtonTextHover {
+  @apply text-white cursor-pointer hover:shadow-md hover:shadow-gray-700;
+}

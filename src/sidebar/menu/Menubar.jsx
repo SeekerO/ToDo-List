@@ -14,7 +14,12 @@ const Menubar = ({ openMenu, setopenMenu }) => {
     >
       {/* HEADER */}
       <div className="flex relative items-center">
-        {openMenu && <label className="font-semibold">MENU</label>}
+        {openMenu && (
+          <div className="font-semibold flex text-[13px] items-center text-[#0097B2]">
+            <span className="text-[30px] h-fit">T</span>
+            ODO
+          </div>
+        )}
         <div
           onClick={() => setopenMenu(!openMenu)}
           className={`right-0 hover:text-blue-500 cursor-pointer ${
