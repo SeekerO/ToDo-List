@@ -31,7 +31,7 @@ const Menubar = ({ openMenu, setopenMenu }) => {
       </div>
 
       {/* MENU */}
-      <div className="h-full w-full mt-4 space-y-2 flex flex-col">
+      <div className="h-[100%] w-full mt-4 space-y-2 flex flex-col overflow-x-auto">
         <Search openMenu={openMenu} setopenMenu={setopenMenu} />
         <Taskmenu openMenu={openMenu} />
         <div className="w-full h-[1px] bg-slate-300" />
