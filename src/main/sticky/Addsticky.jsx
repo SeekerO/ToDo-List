@@ -1,19 +1,28 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { RiCloseLargeLine } from "react-icons/ri";
 import { MdSaveAlt } from "react-icons/md";
 import { TailSpin } from "react-loader-spinner";
 
 const Addsticky = ({ setopenAdd, openAdd }) => {
-  const [saveSticky, setsaveSticky] = useState(true);
-  const [inputData, setInputData] = useState();
+  const [saveSticky, setsaveSticky] = useState(false);
+  const [formData, setFormData] = useState();
+
+  const MockData = [
+    { id: 1, title: "test1", date: "2024-05-09", note: "test note1" },
+    { id: 2, title: "test2", date: "2024-05-09", note: "test note2" },
+    { id: 3, title: "test3", date: "2024-05-09", note: "test note3" },
+    { id: 4, title: "test4", date: "2024-05-09", note: "test note4" },
+  ];
+
   const saveStickyFunction = () => {
-    return setsaveSticky(!saveSticky);
+    window.localStorage.setItem("stickynote", JSON.stringify(MockData));
+    // return setsaveSticky(!saveSticky);
   };
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setInputData({
-      ...inputData,
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
       [name]: value,
     });
   };
@@ -40,26 +49,25 @@ const Addsticky = ({ setopenAdd, openAdd }) => {
         {saveSticky ? (
           <form className="mt-4 flex flex-col gap-2">
             <input
-              onChange={handleInputChange()}
+              onChange={handleChange}
               name="title"
               placeholder="Title"
               type="text"
               className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-300"
             />
             <input
-              onChange={handleInputChange()}
+              onChange={handleChange}
               name="date"
               type="date"
               className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-300"
             />
             <textarea
-              onChange={handleInputChange()}
+              onChange={handleChange}
               name="note"
               placeholder="Note Here.."
               rows={13}
               className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-300 resize-none"
             />
-            {console.log(inputData)}
           </form>
         ) : (
           <div className="h-full w-full flex flex-col items-center justify-center gap-y-4">

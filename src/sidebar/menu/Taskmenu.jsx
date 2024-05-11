@@ -17,20 +17,19 @@ const Taskmenu = ({ openMenu }) => {
     <div>
       <h4 className="mt-4 text-[11px] font-semibold">TASK</h4>
       {TaskMenu.map((Task_data, index) => (
-        <>
+        <div key={index}>
           <Link
             to={Task_data.to}
-            key={index}
             className=" mt-1 flex items-center gap-2 p-1 w-full hover:shadow-md hover:shadow-slate-400 rounded-md cursor-pointer"
           >
             {Task_data.icon}
             {openMenu && (
-              <a className=" text-[13px] flex items-center">
+              <div className=" text-[13px] flex items-center">
                 {Task_data.title}
-              </a>
+              </div>
             )}
           </Link>
-        </>
+        </div>
       ))}
     </div>
   );

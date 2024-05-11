@@ -9,7 +9,7 @@ const Stickywall = lazy(() => import("./sticky/Stickywall"));
 const Main = () => {
   return (
     <main className="w-full h-[100%] items-center flex flex-col overflow-x-auto px-10">
-      <div className="flex h-full justify-start items-start w-full mt-10 relative">
+      <div className="flex h-full justify-start items-start w-full mt-10 relative overflow-hidden">
         <Suspense fallback="LOADING...">
           <Routes>
             <Route path="/" element={<Upcoming />} />
