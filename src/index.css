@@ -10,5 +10,5 @@
 }
 
 .ButtonTextHover {
-  @apply text-white cursor-pointer hover:shadow-md hover:shadow-gray-700;
+  @apply text-white cursor-pointer hover:shadow-md hover:shadow-gray-700 ;
 }

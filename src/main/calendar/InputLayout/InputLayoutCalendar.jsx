@@ -11,7 +11,7 @@ const InputLayoutCalendar = ({
   events,
 }) => {
   const [formData, setFormData] = useState();
-
+  const [isChecked, setIsChecked] = useState(false);
   const addCalendarListener = () => {
     if (addCalendar === false) setopenCalendar(!addCalendar);
   };
@@ -23,6 +23,7 @@ const InputLayoutCalendar = ({
       date: formData.date,
       start: formData.start,
       end: formData.end,
+      allday: isChecked,
       note: formData.note,
     });
 
@@ -52,7 +53,7 @@ const InputLayoutCalendar = ({
             addCalendar
               ? "w-[400px] h-[100%] duration-300"
               : "w-[40px] h-[50%] duration-300 hover:bg-slate-600 hover:text-white cursor-pointer"
-          } bg-slate-200  rounded-md items-center flex justify-center `}
+          } bg-slate-300  rounded-md items-center flex justify-center `}
         >
           {!addCalendar ? (
             <GoPlus />
@@ -69,24 +70,46 @@ const InputLayoutCalendar = ({
                 placeholder="Title"
                 className="p-2 w-full rounded-md"
               />
-              <div className="flex gap-2 w-full items-center">
+
+              {!isChecked ? (
+                <div className="flex gap-2 w-full items-center">
+                  <input
+                    required
+                    onChange={handleChange}
+                    name="start"
+                    type="datetime-local"
+                    className="p-2 w-full rounded-md"
+                  />
+                  -
+                  <input
+                    onChange={handleChange}
+                    name="end"
+                    type="datetime-local"
+                    className="p-2 w-full rounded-md"
+                  />
+                </div>
+              ) : (
                 <input
+                  onChange={handleChange}
                   required
-                  onChange={handleChange}
-                  name="start"
-                  type="datetime-local"
-                  className="p-2 w-full rounded-md"
-                />-
-                <input
-                  onChange={handleChange}
-                  name="end"
-                  type="datetime-local"
+                  name="date"
+                  type="date"
                   className="p-2 w-full rounded-md"
                 />
+              )}
+
+              <div className="flex gap-2 items-center">
+                <input
+                  name="allday"
+                  type="checkbox"
+                  checked={isChecked}
+                  onChange={() => setIsChecked(!isChecked)}
+                  className="h-4 w-4"
+                />
+                <span className="font-thin">Set as All Day</span>
               </div>
 
               <textarea
-                required
                 onChange={handleChange}
                 name="note"
                 type="text"

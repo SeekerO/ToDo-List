@@ -6,19 +6,15 @@ import interactionPlugin from "@fullcalendar/interaction";
 import InputLayoutCalendar from "./InputLayout/InputLayoutCalendar";
 import CalendarList from "./List/CalendarList";
 
-const Calendar = () => {
+const Calendar = ({ events, setEvents }) => {
   const [addCalendar, setopenCalendar] = useState(false);
   const [openList, setopenList] = useState(false);
-  const [events, setEvents] = useState();
 
-  useLayoutEffect(() => {
-    const stickyData = localStorage.getItem("calendar");
-    if (stickyData !== null) {
-      setEvents(JSON.parse(stickyData));
-    } else {
-      setEvents([]);
-    }
-  }, []);
+  const handleEventClick = (clickInfo) => {
+    const updatedEvent = clickInfo.event;
+
+    window.localStorage.setItem("calendar", JSON.stringify(updatedEvent));
+  };
 
   return (
     <div className="h-full w-full flex gap-2 ">
@@ -47,8 +43,10 @@ const Calendar = () => {
             headerToolbar={{
               start: "today,prev,next", // will normally be on the left. if RTL, will be on the right
               center: "title",
-              end: "dayGridMonth,timeGridWeek,timeGridDay", // will normally be on the right. if RTL, will be on the left
+              end: "dayGridMonth", // will normally be on the right. if RTL, will be on the left
             }}
+            editable="true"
+            eventClick={handleEventClick}
             events={events}
             height={"80vh"}
           />

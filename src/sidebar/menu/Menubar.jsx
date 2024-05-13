@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import Search from "./Search";
 import Taskmenu from "./Taskmenu";
-import ContentList from "./ContentList";
+import ContentList from "./contentlist/ContentList";
 import SettingsLogin from "./SettingsLogin";
 
 const Menubar = ({ openMenu, setopenMenu }) => {
   return (
     <div
-      className={` h-full p-2 bg-slate-200 relative rounded-lg  ${
+      className={` h-full p-2 bg-slate-300 relative rounded-lg  ${
         !openMenu && " flex flex-col items-center justify-center"
       }`}
     >

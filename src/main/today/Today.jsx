@@ -4,32 +4,21 @@ import dayGridPlugin from "@fullcalendar/daygrid";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 
-const Today = () => {
-  const [events, setEvents] = useState();
-  useLayoutEffect(() => {
-    const stickyData = localStorage.getItem("calendar");
-    if (stickyData !== null) {
-      setEvents(JSON.parse(stickyData));
-    } else {
-      setEvents([]);
-    }
-  }, []);
-
+const Today = ({ events, setEvents }) => {
   return (
     <div className="w-full h-full">
-      <h1 className="tracking-wider font-semibold text-[30px]">TODAY</h1>
+      <h1 className="tracking-wider font-semibold text-[30px]">Today</h1>
       <div className="w-full">
-        {" "}
         <Fullcalendar
           plugins={[timeGridPlugin, interactionPlugin]}
           initialView={"timeGrid"}
           headerToolbar={{
-            start: "", // will normally be on the left. if RTL, will be on the right
+            start: "today,prev,next",
             center: "title",
-            end: "", // will normally be on the right. if RTL, will be on the left
+            end: "",
           }}
           events={events}
-          height={"80vh"}
+          height={"70vh"}
         />
       </div>
     </div>

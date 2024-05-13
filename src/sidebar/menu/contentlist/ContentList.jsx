@@ -1,11 +1,8 @@
 import React from "react";
 import { GoPlus } from "react-icons/go";
+import { Link } from "react-router-dom";
 const ContentList = ({ openMenu }) => {
-  const List = [
-    { title: "Personal", content: 3, color: "bg-[#e5c185]" },
-    { title: "Work", content: 10, color: "bg-[#c7522a]" },
-    { title: "List 1", content: 7, color: "bg-[#008585]" },
-  ];
+  const List = [{ title: "Personal", content: 3, color: "bg-[#e5c185]" }];
   return (
     <div className={` ${!openMenu && "justify-center flex flex-col"} `}>
       <h4
@@ -36,16 +33,18 @@ const ContentList = ({ openMenu }) => {
           )}
         </div>
       ))}
-      <div
+
+      <Link
+        to={"/addnewlist"}
         className={`mt-1 flex items-center gap-2 p-1 w-full hover:shadow-md hover:shadow-slate-400 rounded-md cursor-pointer ${
           !openMenu ? "justify-center" : "justify-start"
         }`}
       >
         <GoPlus />
         {openMenu && (
-          <label className="text-[12px] font-semibold">Add New List</label>
+          <label className="text-[12px] font-semibold cursor-pointer">Add New List</label>
         )}
-      </div>
+      </Link>
     </div>
   );
 };

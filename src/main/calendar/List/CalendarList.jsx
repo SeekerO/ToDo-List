@@ -33,7 +33,7 @@ const CalendarList = ({
             openList
               ? "w-[400px] h-[100%] duration-300"
               : "w-[40px] h-[50%] duration-300 hover:bg-slate-400 hover:text-white cursor-pointer"
-          } bg-slate-200  rounded-md items-center flex justify-center `}
+          } bg-slate-300  rounded-md items-center flex justify-center `}
         >
           {!openList ? (
             <div className="flex flex-col items-center">
@@ -59,13 +59,15 @@ const CalendarList = ({
                       .map((data, index) => (
                         <div
                           key={data.id}
-                          className="flex gap-2 p-1 rounded-md text-slate-900 mb-1 font-thin items-center bg-slate-400"
+                          className="w-full flex gap-2 p-1 rounded-md text-slate-900 mb-1 font-thin items-center bg-slate-400"
                         >
-                          <span className="w-fit font-semibold text-[14px]">
-                            {Date(data.date)}
-                          </span>
-                          :<span className="w-[50%]">{data.title}</span>
-                          <a onClick={() => removeEvent(index)}>
+                          <div className="w-full text-ellipsis overflow-hidden space-x-1">
+                            <span className="w-fit font-semibold text-[14px]">
+                              {Date(data.date)}:
+                            </span>
+                            <span className="">{data.title}</span>
+                          </div>
+                          <a onClick={() => removeEvent(index)} className="flex">
                             <CiCircleRemove className="text-[25px] hover:text-red-500 cursor-pointer" />
                           </a>
                         </div>
