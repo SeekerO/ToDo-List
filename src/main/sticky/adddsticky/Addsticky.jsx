@@ -3,20 +3,27 @@ import { RiCloseLargeLine } from "react-icons/ri";
 import { MdSaveAlt } from "react-icons/md";
 import { TailSpin } from "react-loader-spinner";
 
-const Addsticky = ({ setopenAdd, openAdd }) => {
-  const [saveSticky, setsaveSticky] = useState(false);
+const Addsticky = ({ setopenAdd, openAdd, storedData }) => {
+  const [saveSticky, setsaveSticky] = useState(true);
   const [formData, setFormData] = useState();
 
-  const MockData = [
-    { id: 1, title: "test1", date: "2024-05-09", note: "test note1" },
-    { id: 2, title: "test2", date: "2024-05-09", note: "test note2" },
-    { id: 3, title: "test3", date: "2024-05-09", note: "test note3" },
-    { id: 4, title: "test4", date: "2024-05-09", note: "test note4" },
-  ];
-
   const saveStickyFunction = () => {
-    window.localStorage.setItem("stickynote", JSON.stringify(MockData));
-    // return setsaveSticky(!saveSticky);
+    setsaveSticky(!saveSticky);
+    storedData.push({
+      id: storedData.length + 1,
+      title: formData.title,
+      date: formData.date,
+      note: formData.note,
+    });
+
+    window.localStorage.setItem("stickynote", JSON.stringify(storedData));
+    const timer = setTimeout(() => {
+      setsaveSticky(true);
+      setopenAdd(false);
+    }, 3000);
+
+    // Cleanup function to clear the timeout if the component unmounts early
+    return () => clearTimeout(timer);
   };
 
   const handleChange = (e) => {
@@ -39,7 +46,7 @@ const Addsticky = ({ setopenAdd, openAdd }) => {
             <MdSaveAlt />
           </a>
           <a
-            onClick={() => setopenAdd(!openAdd) || setsaveSticky(!saveSticky)}
+            onClick={() => setopenAdd(false) || setsaveSticky(true)}
             className="bg-red-500 px-5 py-1 rounded-md ButtonTextHover "
           >
             <RiCloseLargeLine />
@@ -55,12 +62,12 @@ const Addsticky = ({ setopenAdd, openAdd }) => {
               type="text"
               className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-300"
             />
-            <input
+            {/* <input
               onChange={handleChange}
               name="date"
-              type="date"
+              type="datetime-local"
               className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-300"
-            />
+            /> */}
             <textarea
               onChange={handleChange}
               name="note"

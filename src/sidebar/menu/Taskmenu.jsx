@@ -9,7 +9,7 @@ const Taskmenu = ({ openMenu }) => {
   const TaskMenu = [
     { title: "Upcoming", icon: <MdKeyboardDoubleArrowRight />, to: "/" },
     { title: "Today", icon: <GoTasklist />, to: "/today" },
-    { title: "Calendar", icon: <IoCalendarOutline />, to: "/calendar" },
+    { title: "Calendar +", icon: <IoCalendarOutline />, to: "/calendar" },
     { title: "Sticky Wall", icon: <FaNoteSticky />, to: "/stickywall" },
   ];
 

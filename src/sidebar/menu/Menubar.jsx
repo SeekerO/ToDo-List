@@ -9,7 +9,7 @@ const Menubar = ({ openMenu, setopenMenu }) => {
   return (
     <div
       className={` h-full p-2 bg-slate-200 relative rounded-lg  ${
-        openMenu ? "" : "flex flex-col items-center justify-center"
+        !openMenu && " flex flex-col items-center justify-center"
       }`}
     >
       {/* HEADER */}

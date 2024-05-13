@@ -1,14 +1,18 @@
 import React, { useState, Suspense, useLayoutEffect } from "react";
 
-import Addsticky from "./Addsticky";
+import Addsticky from "./adddsticky/Addsticky";
 import Stickydata from "./stickydata/Stickydata";
 const Stickywall = () => {
   const [openAdd, setopenAdd] = useState(false);
   const [storedData, setstoredData] = useState();
 
   useLayoutEffect(() => {
-    if (localStorage.getItem("stickynote") !== "undefined")
-      return setstoredData(JSON.parse(localStorage?.getItem("stickynote")));
+    const stickyData = localStorage.getItem("stickynote");
+    if (stickyData !== null) {
+      setstoredData(JSON.parse(stickyData));
+    } else {
+      setstoredData([]);
+    }
   }, []);
 
   return (
@@ -24,7 +28,11 @@ const Stickywall = () => {
           />
         </Suspense>
       </div>
-      <Addsticky openAdd={openAdd} setopenAdd={setopenAdd} />
+      <Addsticky
+        openAdd={openAdd}
+        setopenAdd={setopenAdd}
+        storedData={storedData}
+      />
     </div>
   );
 };
