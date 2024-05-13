@@ -61,7 +61,7 @@ const Additem = ({ storagelist }) => {
       <span className=" w-full font-semibold mt-3">ADD ITEM</span>
       <input
         onChange={handleChange}
-        value={formData.title}
+        value={formData?.title || ""}
         type="text"
         name="title"
         placeholder="Title"
@@ -70,7 +70,7 @@ const Additem = ({ storagelist }) => {
 
       <input
         onChange={handleChange}
-        value={formData.date}
+        value={formData?.date || ""}
         type="datetime-local"
         name="date"
         className="p-1  h-fit outline-none focus:shadow-md focus:shadow-slate-400 rounded-md"
@@ -79,7 +79,6 @@ const Additem = ({ storagelist }) => {
         Cutomize color:{" "}
         <input
           onChange={handleChange}
-          value={formData.color}
           type="color"
           name="color"
           placeholder="Category"
@@ -93,13 +92,13 @@ const Additem = ({ storagelist }) => {
           ITEMS
         </span>
         <div className="h-[35vh] mt-2 bg-slate-100 overflow-x-auto">
-          {savedList?.map((data, index) => (
+          {/* {savedList?.map((data, index) => (
             <div className="">
-              {data.list.map((data) => (
-                <div>{data.title}</div>
+              {data.list?.map((data) => (
+                <div>{data?.title}</div>
               ))}
             </div>
-          ))}
+          ))} */}
         </div>
         <button
           onClick={() => addCalendarFunction()}
