@@ -22,7 +22,6 @@ const ContentList = ({ openMenu, List }) => {
         LIST
       </h4>
       <div className="h-[35vh] overflow-visible">
-        {console.log(List)}
         {List?.map((data, index) => (
           <Link
             to={"/listitem/" + data.id}
