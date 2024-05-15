@@ -7,13 +7,14 @@ import React, {
 } from "react";
 import { Routes, Route } from "react-router-dom";
 import AddList from "./addlist/AddList";
+import Listitem from "./listitem/Listitem";
 
 const Upcoming = lazy(() => import("./upcoming/Upcoming"));
 const Calendar = lazy(() => import("./calendar/Calendar"));
 const Today = lazy(() => import("./today/Today"));
 const Stickywall = lazy(() => import("./sticky/Stickywall"));
 
-const Main = () => {
+const Main = ({ List, setList, ListItem, setListItem }) => {
   const [events, setEvents] = useState();
   const [isCompleteData, setisCompleteData] = useState();
   const [storagelist, setlist] = useState();
@@ -30,13 +31,6 @@ const Main = () => {
       setisCompleteData(JSON.parse(complete));
     } else {
       setisCompleteData([]);
-    }
-
-    const dataList = localStorage.getItem("list");
-    if (dataList !== null) {
-      setlist(JSON.parse(dataList));
-    } else {
-      setlist([]);
     }
   }, []);
   return (
@@ -69,8 +63,15 @@ const Main = () => {
             />
             <Route
               path="/addnewlist"
-              element={<AddList storagelist={storagelist} setlist={setlist} />}
+              element={
+                <AddList
+                  storagelist={storagelist}
+                  List={List}
+                  setList={setList}
+                />
+              }
             />
+            <Route path="/listitem/:id" element={<Listitem />} />
           </Routes>
         </Suspense>
       </div>

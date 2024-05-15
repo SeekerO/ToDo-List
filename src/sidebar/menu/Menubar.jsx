@@ -5,7 +5,14 @@ import Taskmenu from "./Taskmenu";
 import ContentList from "./contentlist/ContentList";
 import SettingsLogin from "./SettingsLogin";
 
-const Menubar = ({ openMenu, setopenMenu }) => {
+const Menubar = ({
+  openMenu,
+  setopenMenu,
+  List,
+  setList,
+  ListItem,
+  setListItem,
+}) => {
   return (
     <div
       className={` h-full p-2 bg-slate-300 relative rounded-lg  ${
@@ -35,7 +42,7 @@ const Menubar = ({ openMenu, setopenMenu }) => {
         <Search openMenu={openMenu} setopenMenu={setopenMenu} />
         <Taskmenu openMenu={openMenu} />
         <div className="w-full h-[1px] bg-slate-300" />
-        <ContentList openMenu={openMenu} />
+        <ContentList openMenu={openMenu} List={List} setList={setList} />
         <div className="w-full h-[1px] bg-slate-300" />
       </div>
 
