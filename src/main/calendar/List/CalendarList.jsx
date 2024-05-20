@@ -31,12 +31,12 @@ const CalendarList = ({
           onClick={() => ListListener()}
           className={`${
             openList
-              ? "w-[400px] h-[100%] duration-300"
-              : "w-[40px] h-[50%] duration-300 hover:bg-slate-400 hover:text-white cursor-pointer"
+              ? "md:w-[400px] w-full h-full duration-300 "
+              : "md:w-[40px] w-full  md:h-[50%] h-fit duration-300 hover:bg-slate-400 hover:text-white cursor-pointer"
           } bg-slate-300  rounded-md items-center flex justify-center `}
         >
           {!openList ? (
-            <div className="flex flex-col items-center">
+            <div className="flex md:flex-col items-center">
               <span>L</span>
               <span>I</span>
               <span>S</span>
@@ -67,7 +67,10 @@ const CalendarList = ({
                             </span>
                             <span className="">{data.title}</span>
                           </div>
-                          <a onClick={() => removeEvent(index)} className="flex">
+                          <a
+                            onClick={() => removeEvent(index)}
+                            className="flex"
+                          >
                             <CiCircleRemove className="text-[25px] hover:text-red-500 cursor-pointer" />
                           </a>
                         </div>

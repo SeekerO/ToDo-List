@@ -19,37 +19,39 @@ const Calendar = ({ events, setEvents }) => {
   return (
     <div className="h-full w-full flex gap-2 ">
       <Suspense fallback="LOADING>...">
-        <div className=" h-[80vh]  flex flex-col gap-y-2">
-          <CalendarList
-            addCalendar={addCalendar}
-            setopenList={setopenList}
-            openList={openList}
-            events={events}
-            setEvents={setEvents}
-          />
-          <InputLayoutCalendar
-            events={events}
-            setEvents={setEvents}
-            addCalendar={addCalendar}
-            setopenCalendar={setopenCalendar}
-            openList={openList}
-          />
-        </div>
+        <div className="md:flex w-full ">
+          <div className=" md:h-[80vh]  flex md:flex-col gap-y-2 gap-x-1">
+            <CalendarList
+              addCalendar={addCalendar}
+              setopenList={setopenList}
+              openList={openList}
+              events={events}
+              setEvents={setEvents}
+            />
+            <InputLayoutCalendar
+              events={events}
+              setEvents={setEvents}
+              addCalendar={addCalendar}
+              setopenCalendar={setopenCalendar}
+              openList={openList}
+            />
+          </div>
 
-        <div className="w-full">
-          <Fullcalendar
-            plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
-            initialView={"dayGridMonth"}
-            headerToolbar={{
-              start: "today,prev,next", // will normally be on the left. if RTL, will be on the right
-              center: "title",
-              end: "dayGridMonth", // will normally be on the right. if RTL, will be on the left
-            }}
-            editable="true"
-            eventClick={handleEventClick}
-            events={events}
-            height={"80vh"}
-          />
+          <div className="w-full">
+            <Fullcalendar
+              plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
+              initialView={"dayGridMonth"}
+              headerToolbar={{
+                start: "today,prev,next", // will normally be on the left. if RTL, will be on the right
+                center: "title",
+                end: "dayGridMonth", // will normally be on the right. if RTL, will be on the left
+              }}
+              editable="true"
+              eventClick={handleEventClick}
+              events={events}
+              height={"80vh"}
+            />
+          </div>
         </div>
       </Suspense>
     </div>

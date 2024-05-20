@@ -1,18 +1,28 @@
 import React from "react";
 import { HiPlus } from "react-icons/hi";
-import moment from "moment";
-const Stickydata = ({ storedData, openAdd, setopenAdd }) => {
-  const date_time = (item) => {
-    const formattedDateTime = moment(item).format("DD-MM-YYYY ( HH:mm a )");
-
-    return formattedDateTime;
+import { FaTrash } from "react-icons/fa";
+const Stickydata = ({ storedData, setstoredData, openAdd, setopenAdd }) => {
+  const removeStickyNote = (index) => {
+    const updatedEvents = [...storedData];
+    updatedEvents.splice(index, 1);
+    window.localStorage.setItem("stickynote", JSON.stringify(updatedEvents));
+    setstoredData(updatedEvents);
   };
+
   return (
     <div className="flex gap-3 flex-wrap">
       {storedData &&
         storedData.map((item) => (
-          <div className="w-[250px] h-[250px] text-wrap bg-slate-400 rounded-md p-2  flex flex-col hover:cursor-pointer hover:shadow-md hover:shadow-slate-600">
-            <label className="font-semibold text-[20px]">{item.title}</label>
+          <div className="w-[250px] h-[250px] text-wrap bg-slate-400 rounded-md p-2  flex flex-col hover:shadow-md hover:shadow-slate-600">
+            <div className="font-semibold text-[20px] flex justify-between items-center">
+              <span>{item.title}</span>
+              <span
+                onClick={() => removeStickyNote()}
+                className="hover:text-red-500 cursor-pointer"
+              >
+                <FaTrash />
+              </span>
+            </div>
             {/* <label className="text-[12px]">{date_time(item.date)}</label> */}
             <note className="text-ellipsis overflow-x-auto break-words font-thin">
               {item.note}

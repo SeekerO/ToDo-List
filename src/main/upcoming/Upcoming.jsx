@@ -41,7 +41,7 @@ const Upcoming = ({ events, setEvents, isCompleteData, setisCompleteData }) => {
 
   return (
     <div className="w-full h-full">
-      <div className="flex justify-between">
+      <div className="flex flex-wrap justify-between">
         <h1 className="tracking-wider font-semibold text-[30px]">Upcoming</h1>
         <div className="flex items-center">
           <a

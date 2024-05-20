@@ -34,7 +34,7 @@ const Main = ({ List, setList, ListItem, setListItem }) => {
     }
   }, []);
   return (
-    <main className="w-full h-[100%] items-center flex flex-col overflow-x-auto px-10">
+    <main className="w-full h-[100%] items-center flex flex-col overflow-x-auto md:px-10 px-5">
       <div className="flex h-full justify-start items-start w-full mt-10 relative overflow-hidden">
         <Suspense fallback="LOADING...">
           <Routes>

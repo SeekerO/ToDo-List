@@ -51,8 +51,8 @@ const InputLayoutCalendar = ({
           onClick={() => addCalendarListener()}
           className={`${
             addCalendar
-              ? "w-[400px] h-[100%] duration-300"
-              : "w-[40px] h-[50%] duration-300 hover:bg-slate-600 hover:text-white cursor-pointer"
+              ? "md:w-[400px] w-full h-[100%] duration-300"
+              : "md:w-[40px] w-full md:h-[50%] h-fit py-1 duration-300 hover:bg-slate-600 hover:text-white cursor-pointer"
           } bg-slate-300  rounded-md items-center flex justify-center `}
         >
           {!addCalendar ? (

@@ -88,7 +88,7 @@ const Additem = ({ setList }) => {
   };
 
   return (
-    <div className=" flex flex-col gap-2 w-[50%] p-2 ">
+    <div className=" flex flex-col gap-2 md:w-[50%] w-full p-2 ">
       <input
         onChange={handleChange}
         type="text"

@@ -23,8 +23,10 @@ const Stickywall = () => {
         <Suspense fallback="LOADING...">
           <Stickydata
             storedData={storedData}
+            setstoredData={setstoredData}
             openAdd={openAdd}
             setopenAdd={setopenAdd}
+            
           />
         </Suspense>
       </div>

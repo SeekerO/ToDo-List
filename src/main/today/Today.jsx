@@ -13,9 +13,9 @@ const Today = ({ events, setEvents }) => {
           plugins={[timeGridPlugin, interactionPlugin]}
           initialView={"timeGrid"}
           headerToolbar={{
-            start: "today,prev,next",
+            start: "today,prev",
             center: "title",
-            end: "",
+            end: "next",
           }}
           events={events}
           height={"70vh"}
