@@ -5,7 +5,7 @@ import { PiSignInLight } from "react-icons/pi";
 const SettingsLogin = ({ openMenu }) => {
   return (
     <div
-      className={`flex flex-col  w-full gap-2 absolute bottom-0 mb-2 ${
+      className={`hidden flex flex-col  w-full gap-2 absolute bottom-0 mb-2 ${
         openMenu ? "justify-start " : "justify-center items-center"
       }`}
     >
