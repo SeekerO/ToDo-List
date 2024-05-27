@@ -9,10 +9,12 @@ const Addsticky = ({ setopenAdd, openAdd, storedData }) => {
 
   const saveStickyFunction = () => {
     setsaveSticky(!saveSticky);
+    // #FFFDAF
     storedData.push({
       id: storedData.length + 1,
       title: formData.title,
       date: formData.date,
+      color: formData.color === undefined ? "#fffd8d" : formData.color,
       note: formData.note,
     });
 
@@ -20,6 +22,7 @@ const Addsticky = ({ setopenAdd, openAdd, storedData }) => {
     const timer = setTimeout(() => {
       setsaveSticky(true);
       setopenAdd(false);
+      setFormData("");
     }, 3000);
 
     // Cleanup function to clear the timeout if the component unmounts early
@@ -34,10 +37,22 @@ const Addsticky = ({ setopenAdd, openAdd, storedData }) => {
     });
   };
 
+  const close = () => {
+    setopenAdd(false);
+    setsaveSticky(true);
+    setFormData("");
+  };
+
   if (!openAdd) return;
   return (
     <div className="fixed inset-0 backdrop-blur-sm bg-black  bg-opacity-50 flex justify-center items-center">
-      <div className="w-[400px] h-[500px] p-4 bg-slate-100 shadow-lg shadow-slate-600 rounded-md">
+      <div
+        style={{ backgroundColor: formData?.color }}
+        id="cell"
+        className={`w-[400px] h-[500px] p-4 shadow-lg shadow-slate-600 rounded-md bg-[#fffd8d]
+        }`}
+      >
+        {console.log()}
         <div className="flex gap-4 justify-end">
           <a
             onClick={() => saveStickyFunction()}
@@ -46,7 +61,7 @@ const Addsticky = ({ setopenAdd, openAdd, storedData }) => {
             <MdSaveAlt />
           </a>
           <a
-            onClick={() => setopenAdd(false) || setsaveSticky(true)}
+            onClick={() => close()}
             className="bg-red-500 px-5 py-1 rounded-md ButtonTextHover "
           >
             <RiCloseLargeLine />
@@ -60,7 +75,7 @@ const Addsticky = ({ setopenAdd, openAdd, storedData }) => {
               name="title"
               placeholder="Title"
               type="text"
-              className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-300"
+              className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-100"
             />
             {/* <input
               onChange={handleChange}
@@ -68,12 +83,22 @@ const Addsticky = ({ setopenAdd, openAdd, storedData }) => {
               type="datetime-local"
               className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-300"
             /> */}
+            <div className="flex gap-2 items-center ">
+              <label>Pick Note Color Here: </label>
+              <input
+                onChange={handleChange}
+                name="color"
+                type="color"
+                className=""
+              />
+            </div>
+
             <textarea
               onChange={handleChange}
               name="note"
               placeholder="Note Here.."
               rows={13}
-              className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-300 resize-none"
+              className="outline-none p-2 rounded-md w-full focus:shadow-md focus:shadow-gray-400 bg-gray-100 resize-none "
             />
           </form>
         ) : (

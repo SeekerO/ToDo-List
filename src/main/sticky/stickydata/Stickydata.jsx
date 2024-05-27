@@ -13,7 +13,11 @@ const Stickydata = ({ storedData, setstoredData, openAdd, setopenAdd }) => {
     <div className="flex gap-3 flex-wrap">
       {storedData &&
         storedData.map((item) => (
-          <div className="w-[250px] h-[250px] text-wrap bg-slate-400 rounded-md p-2  flex flex-col hover:shadow-md hover:shadow-slate-600">
+          <div
+            style={{ backgroundColor: item?.color }}
+            className="w-[250px] h-[250px] text-wrap bg-slate-400 rounded-md p-2  flex flex-col hover:shadow-md hover:shadow-slate-600"
+          >
+            {console.log(item)}
             <div className="font-semibold text-[20px] flex justify-between items-center">
               <span>{item.title}</span>
               <span

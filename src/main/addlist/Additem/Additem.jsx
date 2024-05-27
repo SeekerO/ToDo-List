@@ -88,7 +88,7 @@ const Additem = ({ setList }) => {
   };
 
   return (
-    <div className=" flex flex-col gap-2 md:w-[50%] w-full p-2 ">
+    <div className=" flex flex-col gap-2 w-[400px] p-2 ">
       <input
         onChange={handleChange}
         type="text"
@@ -96,19 +96,18 @@ const Additem = ({ setList }) => {
         placeholder="Category"
         className="p-1  h-fit outline-none focus:shadow-md focus:shadow-slate-400 rounded-md"
       />
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-2 items-center text-white">
         Cutomize color:{" "}
         <input
           required
           onChange={handleChange}
           type="color"
           name="color"
-          placeholder="Category"
-          className="p-1  h-fit outline-none focus:shadow-md focus:shadow-slate-400 rounded-md"
+          className="rounded-md"
         />
-        {displayColorPicked(formData?.color)}
+        {/* {displayColorPicked(formData?.color)} */}
       </div>
-      <span className=" w-full font-semibold mt-3">ADD ITEM</span>
+      <span className=" w-full font-semibold mt-3 text-white">INPUT ITEM</span>
 
       {formData?.category && formData?.color && (
         <>
@@ -134,7 +133,7 @@ const Additem = ({ setList }) => {
           </form>
           <button
             onClick={() => addCalendarFunction()}
-            className="w-full rounded-md flex items-center bg-slate-400 justify-center text-white hover:bg-slate-200 hover:text-black"
+            className="w-full rounded-md flex items-center bg-green-600 justify-center text-white hover:bg-slate-200 hover:text-black"
           >
             ADD ITEMS
           </button>{" "}
@@ -142,8 +141,8 @@ const Additem = ({ setList }) => {
       )}
 
       <div className="w-full h-full mt-1">
-        <span className="text-center font-semibold w-full items-center">
-          ITEMS
+        <span className="text-center font-semibold w-full items-center text-white">
+          ITEM LIST
         </span>
         <div className="h-[30vh] mt-2 bg-slate-100 overflow-x-auto p-1 rounded-t-md">
           {savedList?.map((data, index1) => (
@@ -158,7 +157,7 @@ const Additem = ({ setList }) => {
 
         <button
           onClick={() => saveCalendarFunction()}
-          className="w-full rounded-b-md flex items-center bg-slate-400 justify-center text-white hover:bg-slate-200 hover:text-black"
+          className="w-full rounded-b-md flex items-center bg-green-600 justify-center text-white hover:bg-slate-200 hover:text-black"
         >
           SAVE ITEMS
         </button>
